@@ -1,0 +1,156 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --accentColor: #17548f;
+  --transparentColor: #17548f4d;
+  --colorWhite: #fff;
+  --mainFont: "Roboto Condensed", sans-serif;
+  --cardBackgroundColor: #f7f7f7;
+  --bodyBackground: #ebebeb;
+  --linearGradientStart: rgba(112, 158, 246, 1);
+  --linearGradientFinish: rgba(46, 207, 228, 1);
+  --boxShadowColor: rgba(34, 34, 35, 0.4);
+  --linkColor: #852e7b;
+  --backgroundCard: #f7f7f7;
+  --sectionWidth: 900px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  font-family: var(--mainFont);
+  font-size: 16px;
+  line-height: normal;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: var(--bodyBackground);
+  margin: 0;
+  position: relative;
+}
+
+.container {
+  margin: 0 auto;
+}
+
+.header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.navbar {
+  width: 100%;
+  border-radius: 5px;
+}
+
+
+
+.vertical-align {
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+}
+
+.logo {
+  height: 32px;
+  width: 32px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+}
+
+.navbar-nav {
+  flex-direction: row;
+  column-gap: 10px;
+}
+
+.navigation__decor {
+  border: 2px solid var(--accentColor);
+}
+
+.list {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.list-group-item {
+  word-break: break-all;
+}
+
+.card {
+  width: 18rem;
+}
+
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.qrcode {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.visible {
+  display: none;
+}
+
+@media (width < 992px) {
+  .search {
+    width: 100%;
+  }
+
+  .container-fluid {
+    row-gap: 10px;
+  }
+}
+
+@media (width < 800px) {
+  .container {
+    max-width: var(--sectionWidth);
+  }
+
+  .listRow__item {
+    min-width: 350px;
+  }
+
+  .container-fluid {
+    flex-direction: column;
+    justify-content: center;
+  }
+}
