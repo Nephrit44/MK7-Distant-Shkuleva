@@ -13,7 +13,7 @@ searchInput.addEventListener('input', function () {
         showAllCard(cardCollection);
     } else {
         cardCollection.forEach(element => {
-            if (element.getAttribute('data-groupid') == searchInput.value) {
+            if(element.getAttribute('data-groupname').includes(searchInput.value)){
                 element.classList.remove('visible');
             }
         });

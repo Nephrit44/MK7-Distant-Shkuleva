@@ -8,6 +8,7 @@ const getlist = document.querySelector('.card-list'); //Контейнер дл�
 arrColletion.forEach((element) => {
   let newElement = getTemplateCard.content.cloneNode(true); //Создаю клон шаблона карточки
   newElement.querySelector('.card').setAttribute('data-groupid', element.dataGroup);
+  newElement.querySelector('.card').setAttribute('data-groupName', element.groupName);
   newElement.querySelector('.card-title').textContent = element.groupName; //Ищу заголовок и дабавляю ему данные из коллекции
   newElement.querySelector('.card-img-top').src = "./image/" + element.groupIMG;
 
