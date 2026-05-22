@@ -1,25 +1,22 @@
-const navLinkCollection = document.querySelectorAll('.nav-link'); //Кнопки навигации
-const getTemplateCard = document.querySelector('#cardTemplate'); //Заготовки карточек
-const getlist = document.querySelector('.card-list'); //Контейнер для карточек групп
+const navLinkCollection = document.querySelectorAll('.nav-link');
+const getTemplateCard = document.querySelector('#cardTemplate');
+const getlist = document.querySelector('.card-list');
 
-
-
-//Загрузка списка коллекции
-arrColletion.forEach((element) => {
-  let newElement = getTemplateCard.content.cloneNode(true); //Создаю клон шаблона карточки
-  newElement.querySelector('.card').setAttribute('data-groupid', element.dataGroup);
-  newElement.querySelector('.card').setAttribute('data-groupName', element.groupName);
-  newElement.querySelector('.card-title').textContent = element.groupName; //Ищу заголовок и дабавляю ему данные из коллекции
-  newElement.querySelector('.card-img-top').src = "./image/" + element.groupIMG;
-
-  newElement.querySelector('.link__groupMAX-mobile').href = element.maxGroupLinkMobile; //Ссылка на группу MAX
-  newElement.querySelector('.link__groupMAX-pc').href = element.maxGroupLinkPC; //Ссылка на группу MAX
-
-  qrGenerator(element.maxGroupLinkMobile, newElement.querySelector('.qrcode'));
-
-  getlist.append(newElement);
+document.addEventListener('DOMContentLoaded', function () {
+  window.arrColletion.forEach((element) => {
+    let newElement = getTemplateCard.content.cloneNode(true);
+    newElement.querySelector('.card').setAttribute('data-groupid', element.dataGroup);
+    newElement.querySelector('.card-title').textContent = element.groupName;
+    newElement.querySelector('.card-img-top').src = "./image/" + element.groupIMG;
+    let maxLink = element.maxGroupLink || '#';
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    if (!isMobile && maxLink.startsWith('https://max.ru')) {
+      maxLink = maxLink.replace('https://max.ru', 'https://web.max.ru');
+    }
+    newElement.querySelector('.link__groupMAX').href = maxLink;
+    getlist.append(newElement);
+  });
 });
-
 
 navLinkCollection.forEach(element => {
   element.addEventListener('click', function () {
@@ -37,21 +34,3 @@ navLinkCollection.forEach(element => {
     }
   })
 });
-
-
-// Создание экземпляра QRCode
-
-function qrGenerator(qrValue, qrElement) {
-  const qrcode = new QRCode(qrElement, {
-    text: qrValue, // Введите здесь текст или URL-адрес, который вы хотите закодировать в QR-код
-
-    width: 64, // Ширина QR-кода в пикселях
-
-    height: 64, // Высота QR-кода в пикселях
-    colorDark: "#000000", // Цвет кода
-
-    colorLight: "#ffffff", // Цвет фона
-
-    correctLevel: QRCode.CorrectLevel.H, // уровень исправления ошибок
-  });
-}
